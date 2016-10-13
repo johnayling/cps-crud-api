@@ -16,10 +16,10 @@ router.route('/products')
 	.post(function(req, res) {
 		  var product = new Product();
 
-          product.name = req.body.name;
-          product.softwarecode = req.body.softwarecode;
-          product.downloadlocation = req.body.downloadlocation;
-
+          for(prop in req.body){
+                product[prop]=req.body[prop];
+           }
+          
 		  product.save(function(err) {
 		    if (err) {
 		      return res.send(err);
