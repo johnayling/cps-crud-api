@@ -14,14 +14,18 @@ router.route('/products')
 	})
 	
 	.post(function(req, res) {
-		  var product = new Product(req.body);
+		  var product = new Product();
+
+          product.name = req.body.name;
+          product.softwarecode = req.body.softwarecode;
+          product.downloadlocation = req.body.downloadlocation;
 
 		  product.save(function(err) {
 		    if (err) {
 		      return res.send(err);
 		    }
 
-		    res.send({ message: 'Product Added' });
+		    res.send({ message: 'Product Added', data: product });
 		  });
 	});
 
