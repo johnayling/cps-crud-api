@@ -1,12 +1,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var cors = require('cors')
 
 var products = require('./routes/products');
 var licenses = require('./routes/licenses');
 var generators = require('./routes/generators');
 
 var app = express();
+
+app.use(cors())
 
 //connect to database
 //Ideally you will obtain DB details from a config file
